@@ -1,0 +1,43 @@
+package Escrevendo_Arquivo_Txt;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
+import javax.swing.JOptionPane;
+
+public class ativiade2 {
+	
+	public static void main(String[] args) throws IOException {
+		
+		
+		File arquivo = new File("C:\\Users\\Junior\\Documents\\Curso Java\\Modulo 16 - Arquivos apache poi\\testeArquivos\\Arquivos3.txt");
+		
+		if (!arquivo.exists()) {
+			
+			arquivo.createNewFile();
+			
+			
+			String qtdPessoa = JOptionPane.showInputDialog("Quantas frutas na lista");
+			
+			FileWriter escrever_arquivo = new FileWriter(arquivo);
+			
+			 Double total = 0.0;
+			for(int i = 0; i < Integer.parseInt(qtdPessoa);  i++) {
+				
+				String nomefruta = JOptionPane.showInputDialog("Qual é o nome da Fruta "+ i+" ? ");
+				String nvalor= JOptionPane.showInputDialog("Valor da fruta "+ nomefruta+" ? ");
+				escrever_arquivo.write(i + " Fruta: " + nomefruta + " || Valor: " + nvalor + "\n");
+				
+				total += Double.parseDouble(nvalor); 
+						
+			}
+			
+			escrever_arquivo.write("\nTotal: " + total);
+			escrever_arquivo.flush();
+			escrever_arquivo.close();
+			
+		}
+	}
+
+}
